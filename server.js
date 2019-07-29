@@ -1,8 +1,8 @@
 const mongoose = require('mongoose')
-const schema = mongoose.Schema
+const Schema = mongoose.Schema
 
 mongoose.Promise = global.Promise
-mongoose.connect('mongodb://localhost/nodeappdatabase', {
+mongoose.connect('mongodb+srv://jakub:password1234@cluster0-nhlcy.mongodb.net/test?retryWrites=true&w=majority', {
     useMongoClient: true
 })
 
@@ -79,7 +79,7 @@ const findSpecificRecord = function() {
     })
 }
 
-const updadeUserPassword = function() {
+const updateUserPassword = function() {
     // update user password
     return User.findOne({ username: 'Kenny_the_boy' })
         .then(function(user) {
@@ -137,7 +137,7 @@ const findBennyAndRemove = function() {
 Promise.all([kenny.save(), mark.save(), benny.save()])
     .then(findAllUsers)
     .then(findSpecificRecord)
-    .then(updadeUserPassword)
+    .then(updateUserPassword)
     .then(updateUsername)
     .then(findMarkAndDelete)
     .then(findKennyAndDelete)
